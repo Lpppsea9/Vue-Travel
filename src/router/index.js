@@ -1,27 +1,34 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Router from 'vue-router'
+import Home from '@/pages/home/Home'
+import City from '@/pages/city/City'
+import Detail from '@/pages/detail/Detail'
 
-Vue.use(VueRouter)
+Vue.use(Router)
 
-const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+export default new Router({
+  routes: [
+    {
+      path: '/',  //指网页上的根路径
+      name: 'Home',
+      component: Home
+    },
+    {
+      path: '/city', //指网页上的根路径下的list
+      name: 'City',
+      component: City
+    },
+    {
+      path: '/detail/:id',
+      name: 'Detail',
+      component: Detail
+    }
+  ],
+  scrollBehavior(to, from, savedPosition) {
+    return {
+      x: 0,
+      y: 0
+    }
   }
-]
-
-const router = new VueRouter({
-  routes
 })
 
-export default router

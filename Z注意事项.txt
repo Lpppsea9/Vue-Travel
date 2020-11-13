@@ -1,0 +1,44 @@
+1.以vue结尾的都是单文件组件
+
+2.多页应用
+    优点：  首屏时间快，seo效果好，只访问一个http请求，所以快
+    缺点：  跳转页面时间慢
+
+单页应用
+    vue是单页应用，页面跳转的时候，并不每次去加载一个html文件(发送一个http请求)，
+js能感知到页面的跳转(url的变化)，可以通过js动态的把当前页面的内容删除掉，再去把
+新的页面上的dom结构渲染出来
+    优点：  页面切换快
+    缺点:   1.首屏时间稍慢（请求一个html，同时还需要请求一个js，两个都返回成功，页面才成功显示）
+            2.SEO差
+
+3.<tempalte>
+    <div></div>  //最外层中必须要用一个div包裹，因为只能向外暴露出一个div
+</tempalte>
+
+4.  
+    手机端有时写border = 1px，但是一些手机上是多倍屏，是几倍的px边框
+    1像素边框解决方案，引入boder的一个styles 的.css文件
+
+5.
+    一些手机的click事件会延迟300ms执行，
+    方案 引入模块
+        npm install fastclick --save
+
+6.
+    装入stylus依赖包，跟sass，less差不多
+        方便快速书写css代码
+        npm install stylus --save
+        npm install stylus-loader --save
+        
+7. 
+    css样式中css重名怎么办？
+        在某个组件中的style中加入scoped
+        <style lang="stylus" scoped>
+        表示header只在当前的页面中生效,
+        不影响其他页面的渲染
+
+8.
+    GIthub上搜索Vue-Awesome-Swiper
+    添加到依赖
+    npm install vue-awesome-swiper --save
