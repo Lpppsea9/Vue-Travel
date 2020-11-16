@@ -25,7 +25,8 @@ export default {
   },
   computed: {
     showSwiper () {
-      return this.list.length
+      //上面v-if为false的时候swiper不会被创建，解决了首个轮播图为第4个的情况
+      return this.list.length 
     }
   }
 }

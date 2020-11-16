@@ -42,3 +42,44 @@ js能感知到页面的跳转(url的变化)，可以通过js动态的把当前�
     GIthub上搜索Vue-Awesome-Swiper
     添加到依赖
     npm install vue-awesome-swiper --save
+
+9.
+    slot是干什么用的
+
+10.
+    ajax获取首页数据
+    axios非常强大，在浏览器端可以发送xhr请求，在服务器端可以发送http请求
+    使用axios npm install axios --save
+    axios返回的是一个promise对象  mock:虚假的 ，虚假的本地的json数据
+    ret:true 反应了服务器正确了响应了你的请求
+
+11. npm run serve 是vue-cli3
+    npm run dev 是vue-cli2
+
+12. 子元素用浮动的话float
+    父元素添加
+
+13. better-scroll插件
+    npm install better-scroll --save
+
+14. 安装vuex
+    npm install vuex
+
+15. mounted是页面第一次加载后发一个ajax请求
+    activited是页面重新显示的时候，activited会被重新执行
+
+16. 清楚点击300ms延迟用的是在assets里的reset.styl里
+    设置touch-action: manipulation
+
+17. router-link ,vue默认会把它变成一个a标签
+    <router-link tag="li"   这里的tag是把router-link标签变成li标签而不是默认的a标签
+        class="item border-bottom"
+        v-for="item of list"
+        :key="item.id"
+
+18.防止banner出现页面抖动的一个感觉
+    可以给banner写这样一段样式
+    .banner
+        overflow: hidden
+        height: 0
+        padding-bottom: 55%

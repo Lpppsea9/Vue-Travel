@@ -19,7 +19,7 @@ export default new Router({
       component: City
     },
     {
-      path: '/detail/:id',
+      path: '/detail/:id', //带一个参数，这个参数会放到id这个变量里
       name: 'Detail',
       component: Detail
     }

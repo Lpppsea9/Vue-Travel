@@ -38,8 +38,8 @@ export default {
     ...mapState(['city'])
   },
   methods: {
-    getHomeInfo () {
-      axios.get('/api/index.json?city=' + this.city)
+    getHomeInfo(){
+      axios.get('/api/index.json')
         .then(this.getHomeInfoSucc)
     },
     getHomeInfoSucc (res) {
@@ -54,7 +54,6 @@ export default {
     }
   },
   mounted () {
-    this.lastCity = this.city
     this.getHomeInfo()
   },
   activated () {

@@ -25,7 +25,7 @@
       <div
         class="area"
         v-for="(item, key) of cities"
-        :key="key"
+        :key="key" 
         :ref="key"
       >
         <div class="title border-topbottom">{{key}}</div>
@@ -66,10 +66,11 @@ export default {
     },
     ...mapMutations(['changeCity'])
   },
-  watch: {
+  watch: {  //监听letter的变化
     letter () {
-      if (this.letter) {
-        const element = this.$refs[this.letter][0]
+      if (this.letter) {  //如果letter不为空的时候
+        const element = this.$refs[this.letter][0]   
+        // console.log(element);  //获取到dom元素
         this.scroll.scrollToElement(element)
       }
     }

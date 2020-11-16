@@ -25,9 +25,9 @@ export default {
     letters () {
       const letters = []
       for (let i in this.cities) {
-        letters.push(i)
+        letters.push(i) //把ABCDpush进去
       }
-      return letters
+      return letters //ABCD
     }
   },
   data () {
@@ -38,11 +38,11 @@ export default {
     }
   },
   updated () {
-    this.startY = this.$refs['A'][0].offsetTop
+    this.startY = this.$refs['A'][0].offsetTop  
   },
   methods: {
     handleLetterClick (e) {
-      this.$emit('change', e.target.innerText)
+      this.$emit('change', e.target.innerText)  //向City.vue触发事件
     },
     handleTouchStart () {
       this.touchStatus = true
@@ -52,9 +52,10 @@ export default {
         if (this.timer) {
           clearTimeout(this.timer)
         }
-        this.timer = setTimeout(() => {
-          const touchY = e.touches[0].clientY - 79
+        this.timer = setTimeout(() => {  //给move事件节流，优化性能
+          const touchY = e.touches[0].clientY - 79 //ABCD...到header下面的距离
           const index = Math.floor((touchY - this.startY) / 20)
+          console.log(index);
           if (index >= 0 && index < this.letters.length) {
             this.$emit('change', this.letters[index])
           }

@@ -50,7 +50,7 @@ export default {
       if (this.timer) {
         clearTimeout(this.timer)
       }
-      if (!this.keyword) {
+      if (!this.keyword) {  //清空搜索框，让搜索结果消失
         this.list = []
         return
       }
@@ -75,7 +75,7 @@ export default {
     ...mapMutations(['changeCity'])
   },
   mounted () {
-    this.scroll = new Bscroll(this.$refs.search, {
+    this.scroll = new Bscroll(this.$refs.search, {  //搜索出来的结果可以滚动
       click: true
     })
   }

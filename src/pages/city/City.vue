@@ -9,11 +9,11 @@
     ></city-list>
     <city-alphabet
       :cities="cities"
-      @change="handleLetterChange"
+      @change="handleLetterChange"  
     ></city-alphabet>
   </div>
 </template>
-
+// @change是监听Alphabet里的change事件
 <script>
 import axios from 'axios'
 import CityHeader from './components/Header'
@@ -30,8 +30,8 @@ export default {
   },
   data () {
     return {
-      cities: {},
-      hotCities: [],
+      cities: {}, //存放abcd所对应的城市的名字
+      hotCities: [], //存的热门城市
       letter: ''
     }
   },
@@ -49,7 +49,7 @@ export default {
       }
     },
     handleLetterChange (letter) {
-      this.letter = letter
+      this.letter = letter  //把data里letter定义为接收到的letter
     }
   },
   mounted () {

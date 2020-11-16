@@ -26,7 +26,7 @@ export default {
   data () {
     return {
       swiperOption: {
-        autoplay: false
+        autoplay: false //防止自动轮播
       }
     }
   },
@@ -48,7 +48,7 @@ export default {
 
 <style lang="stylus" scoped>
   @import '~styles/varibles.styl'
-  @import '~styles/mixins.styl'
+  @import '~styles/mixins.styl'  
   .icons >>> .swiper-container
     height: 0
     padding-bottom: 50%
