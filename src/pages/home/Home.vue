@@ -1,21 +1,24 @@
 <template>
   <!-- <div>
-    <home-swiper :list="swiperList"></home-swiper>
     <home-icons :list="iconList"></home-icons>
     <home-recommend :list="recommendList"></home-recommend>
     <home-weekend :list="weekendList"></home-weekend>
   </div> -->
     <div>
         <home-header></home-header>
+        <home-swiper :list="swiperList"></home-swiper>
     </div>
 </template>
 
 <script>
 import HomeHeader from './components/Header'
+import HomeSwiper from './components/Swiper'
+
 export default {
     name: 'Home',
     components: {
-        HomeHeader: HomeHeader
+        HomeHeader: HomeHeader,
+        HomeSwiper: HomeSwiper
     }
 }
 

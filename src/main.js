@@ -6,8 +6,8 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 import store from './store'
 import 'styles/reset.css'   //重置项目的css，统一方案
 import 'styles/border.css'  //解决1像素边框的问题
-import 'styles/iconfont.css'
-import 'swiper/dist/css/swiper.css'
+import 'styles/iconfont.css' //引入iconfont
+import 'swiper/dist/css/swiper.css' //使用vue awsomeswiper插件
 
 Vue.config.productionTip = false
 Vue.use(VueAwesomeSwiper)
