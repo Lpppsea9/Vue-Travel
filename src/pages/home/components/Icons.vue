@@ -2,19 +2,15 @@
     <div class="icons">
         <swiper>
             <swiper-slide>
-                <div class="icon">
+                <div 
+                    class="icon" 
+                    v-for="item of iconList"
+                    :key="item.id"
+                >
                     <div class="icon-img">
-                        <img class="icon-img-content" src="http://img1.qunarzz.com/piao/fusion/1611/54/ace00878a52d9702.png">
+                        <img class="icon-img-content" :src="item.imgUrl">
                     </div>
-                    <p class="icon-desc">热门景点</p>
-                </div>
-            </swiper-slide>
-            <swiper-slide>
-                <div class="icon">
-                    <div class="icon-img">
-                        <img class="icon-img-content" src="http://img1.qunarzz.com/piao/fusion/1611/54/ace00878a52d9702.png">
-                    </div>
-                    <p class="icon-desc">热门景点</p>
+                    <p class="icon-desc">{{item.desc}}</p>
                 </div>
             </swiper-slide>
         </swiper>
@@ -23,7 +19,69 @@
 
 <script>
 export default {
-    name: 'HomeIcons'
+    name: 'HomeIcons',
+    data () {
+        return {
+            iconList: [{
+                id: '0001',
+                imgUrl: 'http://img1.qunarzz.com/piao/fusion/1611/54/ace00878a52d9702.png',
+                desc: '景点门票',
+            }, {
+                id: '0002',
+                imgUrl: 'http://img1.qunarzz.com/piao/fusion/1611/54/ace00878a52d9702.png',
+                desc: '滑雪季节',
+            }, {
+                id: '0003',
+                imgUrl: 'http://img1.qunarzz.com/piao/fusion/1611/54/ace00878a52d9702.png',
+                desc: '泡温泉',
+            }, {
+                id: '0004',
+                imgUrl: 'http://img1.qunarzz.com/piao/fusion/1611/54/ace00878a52d9702.png',
+                desc: '动植园',
+            }, {
+                id: '0005',
+                imgUrl: 'http://img1.qunarzz.com/piao/fusion/1611/54/ace00878a52d9702.png',
+                desc: '99',
+            }, {
+                id: '0006',
+                imgUrl: 'http://img1.qunarzz.com/piao/fusion/1611/54/ace00878a52d9702.png',
+                desc: '66',
+            }, {
+                id: '0007',
+                imgUrl: 'http://img1.qunarzz.com/piao/fusion/1611/54/ace00878a52d9702.png',
+                desc: '77',
+            }, {
+                id: '0008',
+                imgUrl: 'http://img1.qunarzz.com/piao/fusion/1611/54/ace00878a52d9702.png',
+                desc: '88',
+            }, {
+                id: '0009',
+                imgUrl: 'http://img1.qunarzz.com/piao/fusion/1611/54/ace00878a52d9702.png',
+                desc: '99',
+            }]
+        }
+    },
+    /* 
+        计算属性是根据其他的一些属性计算出来生成的一组新的结果
+        它自带缓存这一机制
+    */
+    computed: {
+        pages () {
+            /* 
+                Math.floor是向下取整 8/8 = 1，则第九个图标
+                会在第二个页面(即索引index = 1的页面)
+             */ 
+            const pages = []
+            this.iconList.forEach((item, index) => {
+                const page = Math.floor(index / 8)
+                if (!pages[page]) {
+                    pages[page] = []
+                }
+                pages[page].push(item)
+            })
+            return pages;
+        }
+    }
 }
 </script>
 
@@ -31,6 +89,9 @@ export default {
 @import '~styles/varibles.styl'
     /* 
         padding-bottom是根据父元素的width宽度来计算的 
+
+        .icons >>> .swiper-container使下面的icons也能滑动
+        .swiper-container在控制台可以获得
     */
     .icons >>> .swiper-container
         height 0
@@ -39,7 +100,7 @@ export default {
         background powderblue
         // touch-action none
         .icon
-            border 1px solid grey
+            // border 1px solid grey
             position relative
             overflow hidden
             float left
