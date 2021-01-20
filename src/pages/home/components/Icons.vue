@@ -1,10 +1,10 @@
 <template>
     <div class="icons">
         <swiper>
-            <swiper-slide>
+            <swiper-slide v-for="(page, index) of pages" :key="index">
                 <div 
                     class="icon" 
-                    v-for="item of iconList"
+                    v-for="item of page"
                     :key="item.id"
                 >
                     <div class="icon-img">
@@ -41,23 +41,23 @@ export default {
             }, {
                 id: '0005',
                 imgUrl: 'http://img1.qunarzz.com/piao/fusion/1611/54/ace00878a52d9702.png',
-                desc: '99',
+                desc: '5',
             }, {
                 id: '0006',
                 imgUrl: 'http://img1.qunarzz.com/piao/fusion/1611/54/ace00878a52d9702.png',
-                desc: '66',
+                desc: '6',
             }, {
                 id: '0007',
                 imgUrl: 'http://img1.qunarzz.com/piao/fusion/1611/54/ace00878a52d9702.png',
-                desc: '77',
+                desc: '7',
             }, {
                 id: '0008',
                 imgUrl: 'http://img1.qunarzz.com/piao/fusion/1611/54/ace00878a52d9702.png',
-                desc: '88',
+                desc: '8',
             }, {
                 id: '0009',
                 imgUrl: 'http://img1.qunarzz.com/piao/fusion/1611/54/ace00878a52d9702.png',
-                desc: '99',
+                desc: '9',
             }]
         }
     },
@@ -87,6 +87,7 @@ export default {
 
 <style lang="stylus" scoped>
 @import '~styles/varibles.styl'
+@import '~styles/mixins.styl'
     /* 
         padding-bottom是根据父元素的width宽度来计算的 
 
@@ -97,8 +98,10 @@ export default {
         height 0
         padding-bottom 50%
         overflow hidden
-        background powderblue
+        // background powderblue
         // touch-action none
+    .icons
+        margin-top .1rem
         .icon
             // border 1px solid grey
             position relative
@@ -126,6 +129,7 @@ export default {
                 bottom 0
                 height .44rem
                 line-height .44rem
-                color $darkTextColor
                 text-align center
+                color $darkTextColor
+                ellipsis() //定义在mixins.css中的一个方法，让多余字体呈省略号
 </style>
