@@ -33,7 +33,7 @@ export default {
      */
     .header
         display flex
-        line-height .86rem
+        line-height $headerHeight //定义成变量方便后面整体修改头高
         background $bgColor
         color #fff
         .header-left
