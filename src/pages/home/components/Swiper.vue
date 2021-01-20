@@ -1,7 +1,7 @@
 <template>
     <div class="wrapper">
-    <swiper :options="swiperOptions">
-        <swiper-slide v-for="item of swiperList" :key="item.id">
+    <swiper :options="swiperOptions" v-if="showSwiper">
+        <swiper-slide v-for="item of list" :key="item.id">
             <img class="swiper-img" :src="item.imgUrl" />
         </swiper-slide>
         <div class="swiper-pagination" slot="pagination"></div>
@@ -13,12 +13,15 @@
 export default {
     name: 'HomeSwiper',
     props: {
+        list: Array
     },
     data () {
         return {
         swiperOptions: {
             pagination: '.swiper-pagination',
-            loop: true
+            loop: true,
+            autoplay: true,
+            delay: 3000
         },
         swiperList: [{
             id: '0001',
@@ -27,6 +30,12 @@ export default {
             id: '0002',
             imgUrl: 'http://img1.qunarzz.com/piao/fusion/1802/42/7c92b9a381e46402.jpg_640x200_1cdce2a4.jpg'
         }]
+        }
+    },
+    computed: {
+        // 使list加载完再渲染到页面上，防止轮播图加载后第一张是最后一张图
+        showSwiper () {
+            return this.list.length
         }
     }
 }
