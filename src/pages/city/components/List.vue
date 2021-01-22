@@ -133,7 +133,6 @@ export default {
             color #666
             font-size .26rem
         .button-list
-            // 上右下左
             overflow hidden
             padding .1rem .6rem .1rem .1rem
             .button-wrapper
