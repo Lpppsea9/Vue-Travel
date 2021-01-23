@@ -69,12 +69,12 @@ export default {
         letter() {
             if(this.letter){
                 /* 
-                    获取点击的dom元素(左边某一个字母开头及以下区域)
+                    获取点击的dom元素(左边某一个首字母的区域)
                     因为scrollToElement方法需要一个dom元素 
                 */
                 const element = this.$refs[this.letter][0]
                 this.scroll.scrollToElement(element)
-                // console.log(element); // [0]
+                // console.log(element); // 加上[0]才能获取到dom元素
             }
             // console.log(this.letter); //打印变化的letter
         }
