@@ -1,16 +1,31 @@
 <template>
     <ul class="list">
-        <li class="item" v-for="(item, key) of cities" :key="key">
+        <li 
+            class="item" 
+            v-for="(item, key) of cities" 
+            :key="key"
+            @click="handleLetterClick"
+        >
             {{key}}
         </li>
     </ul>
 </template>
 
 <script>
+/* 
+    Alphabet怎么拿到字母表每个dom元素
+*/
 export default {
     name: 'CityAlphabet',
     props: {
         cities: Object
+    },
+    methods: {
+        handleLetterClick(e) {
+            this.$emit('change', e.target.innerText)
+            // 获取点击的右边的字母列表
+            // console.log(e.target.innerText);
+        }
     }
 }
 </script>

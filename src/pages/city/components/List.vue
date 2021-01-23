@@ -21,7 +21,12 @@
                     </div>
                 </div>
             </div>
-            <div class="area" v-for="(item, key, index) of cities" :key="key">
+            <div 
+                class="area" 
+                v-for="(item, key, index) of cities" 
+                :key="key"
+                :ref="key"
+            >
                 <div class="title border-topbottom">{{key}}</div>
                 <div class="item-list">
                     <div 
@@ -39,15 +44,40 @@
 </template>
 
 <script>
+/* 
+    1.  只要key值保持本层级不重复，和另一层级相同也没关系
+    2.  兄弟组件传值：Alphabet和List实现字母关联
+            当我们处理兄弟组件的时候，可以让Alphabet组件里的值传递给City组件，
+            然后City.vue再帮助我们把数据转发给兄弟组件也就是，List.vue
+
+
+ */
 import Bscroll from 'better-scroll'
 export default {
     name: 'CityList',
     props: {
         cities: Object,
-        hot: Array
+        hot: Array,
+        letter:String
     },
     mounted () {
+        // 使用betterScroll实例
         this.scroll = new Bscroll(this.$refs.wrapper)
+    },
+    watch: {
+        // 监听letter的变化
+        letter() {
+            if(this.letter){
+                /* 
+                    获取点击的dom元素(左边某一个字母开头及以下区域)
+                    因为scrollToElement方法需要一个dom元素 
+                */
+                const element = this.$refs[this.letter][0]
+                this.scroll.scrollToElement(element)
+                // console.log(element); // [0]
+            }
+            // console.log(this.letter); //打印变化的letter
+        }
     }
 }
 </script>
