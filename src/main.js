@@ -2,8 +2,8 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from './store/index'
 import VueAwesomeSwiper from 'vue-awesome-swiper' //引入轮播图插件
-import store from './store'
 import 'styles/reset.css'   //重置项目的css，统一方案
 import 'styles/border.css'  //解决1像素边框的问题
 import 'styles/iconfont.css' //引入iconfont

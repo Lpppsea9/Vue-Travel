@@ -9,7 +9,7 @@
         </div>
         <router-link to="/city">
             <div class="header-right">
-                {{this.city}}
+                {{this.$store.state.city}}
                 <span class="iconfont down-icon">&#xe665;</span>
             </div>
         </router-link>
@@ -19,9 +19,18 @@
 <script>
 export default {
     name: 'HomeHeader',
-    props: {
-        city: String
-    }
+    /* 
+        之前city是父组件Home传来的，现在不用了,
+        之前显示数据是{{this.city}}改为{{this.$store.city}}
+
+        $store指的是创建的store文件夹下的index中的 Vuex.store,为什么每个子组件
+        都能用这个$store呢,是因为在main.js里面创建 vue根实例的时候,把store传递
+        进去了，所以vuex创建的store会被派发到每一个子组件里面，所以在每一个子组件里都可以用 {{this.$store}} 获取到这个store
+
+    */
+    // props: {
+    //     city: String
+    // }
 }
 </script>
 
