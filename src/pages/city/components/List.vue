@@ -50,8 +50,6 @@
     2.  兄弟组件传值：Alphabet和List实现字母关联
             当我们处理兄弟组件的时候，可以让Alphabet组件里的值传递给City组件，
             然后City.vue再帮助我们把数据转发给兄弟组件也就是，List.vue
-
-
  */
 import Bscroll from 'better-scroll'
 export default {
