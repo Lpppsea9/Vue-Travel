@@ -2,7 +2,7 @@
     <div class="list" ref="wrapper">
         <div>
             <div class="area">
-                <div class="title border-topbottom">当城市</div>
+                <div class="title border-topbottom">当前城市</div>
                 <div class="button-list">
                     <div class="button-wrapper">
                         <div class="button">{{this.$store.state.city}}</div>
@@ -16,7 +16,7 @@
                         class="button-wrapper" 
                         v-for="item of hot"
                         :key="item.id"
-                        @click="handleCityClick()"
+                        @click="handleCityClick(item.name)"
                     >
                         <div class="button">{{item.name}}</div>
                     </div>
@@ -39,7 +39,6 @@
                     </div>
                 </div>
             </div>
-            
         </div>
     </div>
 </template>
@@ -60,10 +59,9 @@ export default {
         letter:String
     },
     methods: {
-        handleCityClick () {
-            // alert("s")
-            console.log("11");
-        }
+        handleCityClick(city) {
+            this.$store.dispatch('changeCity', city)
+        },
     },
     watch: {
         // 监听letter的变化

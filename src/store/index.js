@@ -12,6 +12,16 @@ export default new Vuex.Store({
             城市是公用的数据，默认是北京
             首页会用到这个公用的数据
         */
-        city: '上海'
+        city: '广州'
+    },
+    actions: {
+        changeCity(ctx, city) {
+            ctx.commit('changeCity', city)
+        }
+    },
+    mutations: {
+        changeCity(state, city) {
+            state.city = city
+        }
     }
 })
