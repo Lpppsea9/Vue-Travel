@@ -13,5 +13,15 @@ export default new Vuex.Store({
             首页会用到这个公用的数据
         */
         city: '上海'
+    },
+    // actions: {
+    //     changeCity(ctx, city) {
+    //         ctx.commit('changeCity', city)
+    //     }
+    // },
+    mutations: {
+        changeCity(state, city) {
+            state.city = city
+        }
     }
 })

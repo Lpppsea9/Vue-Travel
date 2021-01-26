@@ -16,7 +16,7 @@
                         class="button-wrapper" 
                         v-for="item of hot"
                         :key="item.id"
-                        @click="handleCityClick()"
+                        @click="handleCityClick(item.name)"
                     >
                         <div class="button">{{item.name}}</div>
                     </div>
@@ -60,9 +60,10 @@ export default {
         letter:String
     },
     methods: {
-        handleCityClick () {
-            // alert("s")
-            console.log("11");
+        handleCityClick (city) {
+            // alert(city)
+            // 直接 commit
+            this.$store.commit('changeCity', city)
         }
     },
     watch: {
