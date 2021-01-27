@@ -14,14 +14,5 @@ export default new Vuex.Store({
         */
         city: '上海'
     },
-    // actions: {
-    //     changeCity(ctx, city) {
-    //         ctx.commit('changeCity', city)
-    //     }
-    // },
-    mutations: {
-        changeCity(state, city) {
-            state.city = city
-        }
-    }
+    
 })

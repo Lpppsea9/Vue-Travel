@@ -2,7 +2,7 @@
     <div class="list" ref="wrapper">
         <div>
             <div class="area">
-                <div class="title border-topbottom">当城市</div>
+                <div class="title border-topbottom">当前城市</div>
                 <div class="button-list">
                     <div class="button-wrapper">
                         <div class="button">{{this.$store.state.city}}</div>
@@ -61,9 +61,9 @@ export default {
     },
     methods: {
         handleCityClick (city) {
-            // alert(city)
+            console.log("1");
             // 直接 commit
-            this.$store.commit('changeCity', city)
+            // this.$store.commit('changeCity', city)
         }
     },
     watch: {
