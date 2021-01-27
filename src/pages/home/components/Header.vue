@@ -9,7 +9,7 @@
         </div>
         <router-link to="/city">
             <div class="header-right">
-                {{this.$store.state.city}}
+                {{this.city}}
                 <span class="iconfont down-icon">&#xe665;</span>
             </div>
         </router-link>
@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
     name: 'HomeHeader',
     /* 
@@ -31,6 +32,15 @@ export default {
     // props: {
     //     city: String
     // }
+
+    /* 
+        意思是 mapstate是指把vuex里面的数据映射到这个组件的computed计算属性里 
+        映射什么? 
+            把city这个公用数据映射到名字叫做city的计算属性之中
+    */
+    computed: {
+        ...mapState(['city'])
+    }
 }
 </script>
 
@@ -61,7 +71,8 @@ export default {
             border-radius .1rem
             color #ccc
         .header-right
-            width 1.24rem
+            min-width 1.04rem
+            padding 0 .1rem;
             text-align center
             color #fff
             .down-icon

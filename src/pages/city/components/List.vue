@@ -24,7 +24,7 @@
             </div>
             <div 
                 class="area" 
-                v-for="(item, key, index) of cities" 
+                v-for="(item, key) of cities" 
                 :key="key"
                 :ref="key"
             >
@@ -34,6 +34,7 @@
                         class="item border-bottom"
                         v-for="innerItem of item"
                         :key="innerItem.id"
+                        @click="handleCityClick(innerItem.name)"
                     >
                         {{innerItem.name}}
                     </div>
@@ -59,9 +60,13 @@ export default {
         letter:String
     },
     methods: {
-        handleCityClick(city) {
-            this.$store.dispatch('changeCity', city)
-        },
+        handleCityClick (city) {
+            // alert(city)
+            // this.$store.dispatch('changeCity', city)
+            // 直接 commit
+            this.$store.commit('changeCity', city)
+            this.$router.push('/')
+        }
     },
     watch: {
         // 监听letter的变化
@@ -80,7 +85,9 @@ export default {
     },
     mounted () {
         // 使用betterScroll实例
-        this.scroll = new Bscroll(this.$refs.wrapper)
+        this.scroll = new Bscroll(this.$refs.wrapper, {
+            click: true
+        })
     }
 }
 </script>
