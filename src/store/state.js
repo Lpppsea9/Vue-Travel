@@ -3,9 +3,7 @@ try {
     if (localStorage.city) {
         defaultCity = localStorage.city
     }
-} catch (error) {
-    
-}
+} catch (error) {}
 
 export default {
     city: defaultCity

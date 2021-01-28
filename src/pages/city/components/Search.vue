@@ -17,6 +17,7 @@
                     class="search-item border-bottom" 
                     v-for="item of list"
                     :key="item.id"
+                    @click="handleSearchCity(item.name)"
                 >
                     {{item.name}}
                 </li>
@@ -31,6 +32,7 @@
 
 <script>
 import Bscroll from 'better-scroll'
+import { mapMutations } from 'vuex'
 export default {
     name: 'CitySearch',
     props: {
@@ -43,11 +45,23 @@ export default {
             timer: null
         }
     },
+    methods: {
+        ...mapMutations({
+            changeSCity:'changeYity'
+        }),
+        
+        // ...mapMutations(['changeYity']),
+        handleSearchCity (city) {
+            this.changeSCity(city)
+            this.$router.push('/')
+        },
+    },
     // 把逻辑的运算都放在js里来完成，而模板里尽量保持简洁的语法
     computed: {
         hasNoData () {
             return !this.list.length
-        }
+        },
+        
     },
     // 节流
     watch: {
@@ -75,9 +89,10 @@ export default {
         }
     },
     mounted () {
-        this.scroll = new Bscroll(this.$refs.searchResult)
+        this.scroll = new Bscroll(this.$refs.searchResult, {
+            click:true
+        })
     }
-
 }
 </script>
 

@@ -11,6 +11,13 @@ import 'swiper/dist/css/swiper.css' //使用vue awsomeswiper插件，css文件
 
 Vue.config.productionTip = false
 Vue.use(VueAwesomeSwiper) // 使用轮播图插件
+/* 
+    不再使用fastclick插件，因为
+    html {
+        touch-action: manipulation
+    }
+    可以解决300ms延迟的问题
+*/
 
 /* 本段代码做了变更 */
 new Vue({

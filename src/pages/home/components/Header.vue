@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 export default {
     name: 'HomeHeader',
     /* 
@@ -39,7 +39,8 @@ export default {
             把city这个公用数据映射到名字叫做city的计算属性之中
     */
     computed: {
-        ...mapState(['city'])
+        ...mapState(['city']),
+        ...mapGetters(['doubleCity'])
     }
 }
 </script>

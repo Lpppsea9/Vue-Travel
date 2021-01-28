@@ -8,9 +8,13 @@ Vue.use(Vuex)
 
 
 export default new Vuex.Store({
-
     state: state,
-    mutations: mutations
+    mutations: mutations,
+    getters: {
+        doubleCity(state) {
+            return state.city + ' ' + state.city
+        }
+    }
 })
 
 // 导出一个通过Vuex创建的一个仓库

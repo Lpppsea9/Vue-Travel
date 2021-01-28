@@ -1,14 +1,16 @@
 <template>
     <div class="list" ref="wrapper">
         <div>
+            <!-- 当前城市区域 -->
             <div class="area">
                 <div class="title border-topbottom">当前城市</div>
                 <div class="button-list">
                     <div class="button-wrapper">
-                        <div class="button">{{this.$store.state.city}}</div>
+                        <div class="button">{{this.currentCity}}</div>
                     </div>
                 </div>
             </div>
+            <!-- 热门城市区域 -->
             <div class="area">
                 <div class="title border-topbottom">热门城市</div>
                 <div class="button-list">
@@ -22,6 +24,7 @@
                     </div>
                 </div>
             </div>
+            <!-- 首字母城市列表 -->
             <div 
                 class="area" 
                 v-for="(item, key) of cities" 
@@ -52,6 +55,7 @@
             然后City.vue再帮助我们把数据转发给兄弟组件也就是，List.vue
  */
 import Bscroll from 'better-scroll'
+import { mapState, mapMutations } from 'vuex'
 export default {
     name: 'CityList',
     props: {
@@ -59,14 +63,26 @@ export default {
         cities: Object,
         letter:String
     },
+    computed: {
+        /* 
+            可以是数组，也可以是一个对象
+            意思是 把vuex里的 city 这个公用的数据映射到list这个组件的计算属性
+            里
+        */
+        ...mapState({
+            currentCity: 'city'
+        })
+    },
     methods: {
         handleCityClick (city) {
             // alert(city)
             // this.$store.dispatch('changeCity', city)
             // 直接 commit
-            this.$store.commit('changeCity', city)
+            // this.$store.commit('changeCity', city)
+            this.changeYity(city)
             this.$router.push('/')
-        }
+        },
+        ...mapMutations(['changeYity'])
     },
     watch: {
         // 监听letter的变化
