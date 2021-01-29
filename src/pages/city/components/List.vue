@@ -104,6 +104,7 @@ export default {
         this.scroll = new Bscroll(this.$refs.wrapper, {
             click: true
         })
+        console.log(this.hot);
     }
 }
 </script>

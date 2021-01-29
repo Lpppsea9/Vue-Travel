@@ -8,7 +8,11 @@
         >
             <div class="iconfont header-abs-back">&#xe624;</div>
         </router-link>
-        <div class="header-fixed" v-show="!showAbs">
+        <div 
+            class="header-fixed" 
+            v-show="!showAbs"
+            :style="opacityStyle"
+        >
             <router-link to="/">
                 <div class="iconfont header-fixed-back">&#xe624;</div>
             </router-link>
@@ -22,23 +26,40 @@ export default {
     name: 'DeatilHeader',
     data () {
         return {
-            showAbs: true
+            showAbs: true,
+            opacityStyle: {
+                // 默认透明度为0
+                opacity: 0
+            }
         }
     },
     methods: {
         handleScroll () {
-            console.log(document.documentElement.scrollTop);
-            // console.log("---");
+            // console.log("1");
+            const top = document.documentElement.scrollTop
+            if(top > 60) {
+                let opacity = top / 140
+                opacity = opacity > 1 ? 1 : opacity
+                this.opacityStyle = { opacity }
+                this.showAbs = false
+            } else {
+                this.showAbs = true
+            }
         }
     },
     mounted () {
+        // 绑定在全局window对象上时，跳转到其他页面也会触发handleScroll事件
         window.addEventListener('scroll', this.handleScroll)
+    },
+    destroyed () {
+        window.removeEventListener('scroll', this.handleScroll)
     }
 }
 </script>
 
 <style lang="stylus" scoped>
     @import '~styles/varibles.styl';
+    // 黑色返回键样式
     .header-abs
         position absolute
         left .2rem
@@ -53,6 +74,7 @@ export default {
             color: #fff
             font-size .4rem
     .header-fixed
+        z-index: 2;
         position fixed
         top 0
         left 0
