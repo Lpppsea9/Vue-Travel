@@ -1,9 +1,17 @@
 <template>
     <div>
-        <detail-banner :list="list" v-if="list.length"></detail-banner>
+        <detail-banner 
+            :list="list" 
+            :id="id"
+            v-if="list.length"
+        ></detail-banner>
         <detail-header></detail-header>
         <div class="content">
-            <detail-list></detail-list>
+            <detail-list
+                :DetailList="list"
+                :id="id"
+                v-if="list.length"
+            ></detail-list>
         </div>
         
     </div>
@@ -25,7 +33,8 @@ export default {
     data () {
         return {
             list: [],
-            sightName:''
+            sightName:'',
+            id:''
         }
     },
     methods: {
@@ -41,7 +50,7 @@ export default {
             const data = res.data.ports
             this.list = data
             // console.log(data);
-
+            this.id = this.$route.params.id
         }
     },
 

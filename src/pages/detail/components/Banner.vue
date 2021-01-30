@@ -2,13 +2,13 @@
     <div>
         <div class="banner" @click="handleBannerClick">
             <img class="banner-img" src="http://img1.qunarzz.com/sight/p0/201404/23/04b92c99462687fa1ba45c1b5ba4ad77.jpg_600x330_bf9c4904.jpg">
-            <div class="banner-info" v-for="item of list">
+            <div class="banner-info" >
                 <div class="banner-title">
-                    {{item.sightName}}
+                    {{list[id].sightName}}
                 </div>
                 <div class="banner-number">
                     <span class="iconfont banner-icon">&#xe91f;</span>
-                    39
+                    {{list[id].gallaryImgs.length}}
                 </div>
             </div>
         </div>
@@ -25,7 +25,8 @@ import CommonGallery from 'common/gallery/Gallery'
 export default {
     name: 'DetailBanner',
     props: {
-        list: Array
+        list: Array,
+        id: String
     },
     data () {
         return {
@@ -45,7 +46,8 @@ export default {
         }
     },
     mounted() {
-        console.log(this.list);
+        // console.log(this.list);
+        // console.log(this.id);
     }
 }
 </script>

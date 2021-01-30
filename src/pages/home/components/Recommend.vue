@@ -5,9 +5,9 @@
             <router-link 
                 tag="li" 
                 class="item border-bottom"
-                v-for="item of list"
+                v-for="(item, index) of list"
                 :key="item.id"
-                :to="'./Detail/' + item.id"
+                :to="'./Detail/' + index"
             >
                 <img class="item-img" :src="item.imgUrl" />
                 <div class="item-info">
